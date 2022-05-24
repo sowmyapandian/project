@@ -1,0 +1,38 @@
+<!-- <div class="container">
+    <h1>Angular CheckBox Example - Tutsmake.com</h1>
+         
+    <form [formGroup]="form" (ngSubmit)="submit()">
+             
+        <div class="form-group">
+            <label for="website">Website:</label>
+            <div *ngFor="let web of websiteList">
+              <label>
+                <input type="checkbox" [value]="web.id" (change)="onCheckboxChange($event)" />
+                {{web.name}}
+              </label>
+            </div>
+        </div>
+         
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div> -->
+<form [formGroup]="order">
+  <table>
+    <thead>
+      <tr>
+        <th scope = "col">
+          <input type="checkbox" (change)="onChangeFood($event)">
+</th>
+<th scope="col">Vegtable</th>
+<th scope="col">Price</th>
+</tr>
+</thead>
+<tbody>
+  <tr *ngFor="let n of food">
+    <th scope="row">
+      <input 
+    </th>
+  </tr>
+</tbody>
+</table>
+</form>

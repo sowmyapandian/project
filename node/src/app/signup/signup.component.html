@@ -1,0 +1,18 @@
+<form [formGroup]="signupForm">
+    <label>Name:</label>
+    <input type="name" formControlName="name"><br>
+    <span class="invalid"
+    *ngIf="signupForm.controls.name.touched && signupForm.controls.name.errors">Invalid Name<br></span>
+    <label>email:</label>
+    <input type="email" formControlName="email"><br>
+    <span class="invalid"
+    *ngIf="signupForm.controls.email.touched && signupForm.controls.email.errors">Invalid email<br></span>
+    <label>Phone number:</label>
+    <input type="name" formControlName="phonenumber"><br>
+    <span class="invalid"
+    *ngIf="signupForm.controls.phonenumber.touched && signupForm.controls.phonenumber.errors">Invalid number<br></span>
+    <label>password:</label>
+    <input type="password" formControlName="password"><br>
+    <span class="invalid"
+    *ngIf="signupForm.controls.password.touched && signupForm.controls.password.errors">Invalid password<br></span>
+</form>

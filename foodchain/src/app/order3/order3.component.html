@@ -1,0 +1,61 @@
+<div [formGroup]="check" >
+<div class="container">
+   
+    <ul>
+        
+        <li *ngFor="let checkboxArrays of checkboxArray ">
+            <input type="{{checkboxArrays.type}}" value="{{checkboxArrays.id}}"  (change)="onChange($event)">
+                {{checkboxArrays.name}} -
+                {{checkboxArrays.price}}
+              
+        </li>
+    
+    </ul>
+    <div class="ul_product">
+       <ul>
+           <li *ngFor="let productArrays of productArray">
+               {{productArrays.name }} -
+                 {{productArrays.price}}
+           </li>
+       </ul> 
+    </div> 
+    <div>
+       Total Price = {{total}}
+       <button type="button" (click)="submit()">Buy</button>
+       <!-- <button type="button" (click)="post()">post</button> -->
+    </div> 
+   
+</div> 
+</div>
+<!-- ---------------------------------------------------------------------------------------------------------------
+<div class="container">
+   
+        
+        <div *ngFor="let checkboxArrays of checkboxArray ">
+            <input type="{{checkboxArrays.type}}" value="{{checkboxArrays.id}}"  (change)="onChange($event)"> 
+            <table>
+                <tbody>
+            <tr>
+                <th>Vegtable Names</th>
+                <th>Price</th>
+    </tr>
+
+           <tr> 
+                <td>{{checkboxArrays.name}}</td> 
+                 <td>{{checkboxArrays.price}}</td> 
+                </tr>
+            </tbody>    
+        </table>  
+    <div class="ul_product">
+       <ul>
+           <li *ngFor="let productArrays of productArray">
+               {{productArrays.name }} -
+                 {{productArrays.price}}
+           </li>
+       </ul> 
+    </div> 
+    <div>
+       Total Price = {{total}}<!-- <button type="button" (click)="submit(onChange())">submit</button> -->
+    <!-- </div> 
+   
+</div> --> 

@@ -1,0 +1,76 @@
+<!-- <div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="loginForm" method="post" (ngSubmit)="login()">
+
+        <div class="form-group">
+          <label for="email" class='fa fa-envelope'></label>
+          <input type="email" placeholder="Email Address" formControlName="email">
+          <span class="text-danger"
+            *ngIf="loginForm.controls.email.errors && loginForm.controls.email.touched"><br>Invalid Email Address</span>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="fa fa-lock"></label>
+          <input type="password" placeholder="Password" formControlName="password">
+          <span class="text-danger"
+            *ngIf="loginForm.controls.password.errors && loginForm.controls.password.touched"><br>Invalid
+            Password</span>
+        </div>
+
+        <div class="text-center">
+          <button id="submitButton" type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
+        </div>
+        <div class="text-center text-success" *ngIf="successMessage">{{successMessage}}</div> -->
+
+      <!-- </form>
+      <div class="signup text-center">
+        <label for="signup" class="text-danger">Don't Have a Account?
+          <a routerLink="/signup" class="text-danger">Signup</a></label>
+      </div>
+
+
+    </div>
+  </div>
+</div> --> 
+<!-- ------------------------------------------------------------------- -->
+
+<!-- <div class="container-fluid"> -->
+  <!-- <div class="row"> -->
+    <!-- <div class="col-12"> -->
+    <div class="content">
+      <h1 class="lineUp">Login form</h1>
+      <div class="container">
+    <div class="align">
+      <form [formGroup]="loginForm" method="post" (ngSubmit)="login(this.loginForm.value)">
+        <div class="form-outline mb-4,text-center">
+          <label for="username" class="form-label text-light" >Email:</label>
+          <input type="text" id="username" placeholder="Email Address" formControlName="username">
+          <span class="invalid"
+            *ngIf="loginForm.controls.username.errors && loginForm.controls.username.touched"><br>Invalid Email Address</span>
+        </div>
+
+        <div class="form-outline mb-4,text-center">
+          <label for="password" class="form-label text-light">Password:</label>
+          <input type="password" id="password" placeholder="Password" formControlName="password">
+          <span class="invalid"
+            *ngIf="loginForm.controls.password.errors && loginForm.controls.password.touched"><br>Invalid
+            Password</span>
+        </div>
+
+        <div class="text-center">
+          <button id="submitButton" type="submit" class="btn btn-primary" >Login</button>
+        </div>
+        <!-- <div class="text-center text-success" *ngIf="successMessage">{{successMessage}}</div> -->
+      </form>
+    </div>
+      <div class="Signup">
+        <span for="signup" class="text-danger">Don't Have a Account?
+          <a routerLink="/signup" class="text-danger">Signup</a></span>
+      </div>
+    </div>
+  </div>
+
+    <!-- </div> -->
+  <!-- </div> -->
+<!-- </div> -->

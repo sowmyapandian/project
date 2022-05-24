@@ -1,0 +1,64 @@
+.content{
+    /* background-image: url(../../assets/bgimage.jpg); */
+    background-image: url('../../assets/intro-denoised_sharpened_upscaled_x4.jpg');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    margin-top: 10px;
+    margin-left: -50px;
+  }
+  .container {
+    box-sizing: border-box;
+    margin: auto;
+    width: 500px;
+    padding: 20px;
+    border: 2px solid grey;
+    text-align: center;
+    margin-left: 45px;
+    height: 276px;
+    margin-top: 111px;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #aa54e4, #c962e9);
+  }
+  h1 {
+    text-align: center;
+    font-family: sans-serif;
+}
+h1{
+    position: relative;
+    left: -380px;
+    color: white;
+    margin-bottom: 70px;
+    top: 78px;
+     font-family: initial;
+    /* border: 1px solid violet;
+    background-color: rgb(235, 44, 133); */
+  }
+  .text-center{
+    margin-top: 13px;
+  }
+  .lineUp {
+    animation: 2s anim-lineUp ease-out infinite;
+    color:rgb(100, 206, 171);
+  }
+  @keyframes anim-lineUp {
+    0% {
+      opacity: 0;
+      transform: translateY(80%);
+    }
+    20% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
