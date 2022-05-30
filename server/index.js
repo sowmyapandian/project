@@ -4,8 +4,14 @@ const bodyparser = require("body-parser");
 const app = connection();
 app.use(express.static("public"));
 const port = 8000;
+var login = {};
+const file = require("fs");
+const { request } = require("http");
+const { response } = require("express");
+const { nextTick } = require("process");
 const cors = require("cors");
 const dbconnection = require("./db");
+app.use(express.static("public"));
 app.use(connection.static("public"));
 app.use(bodyparser.json());
 app.use(
@@ -14,34 +20,50 @@ app.use(
   })
 );
 
-//User--------------------------------------------------------
-//To post the user data to the database
-app.post("/post_query", (request, response) => {
+app.post("/postquery", (request, response, next) => {
+  console.log(request);
   var object = {
     name: request.body.name,
     mobileNumber: request.body.mobileNumber,
     email: request.body.email,
-    // society: request.body.society,
     password: request.body.password,
-    // confirmpassword: request.body.confirmpassword,
+    type: "userid",
   };
-  dbconnection.insert(object, "sowmya_trainee").then((res) => {
+
+  dbconnection.insert(object);
+});
+
+// app.post("/post_query", (request, response, next) => {
+//   console.log(request);
+//   var object = {
+//     block: request.body.block,
+//     maintainance: request.body.maintainance,
+//     housetax: request.body.housetax,
+//     watertax: request.body.watertax,
+//     parking: request.body.parking,
+//     charity: request.body.charity,
+//   };
+
+//   dbconnection.insert1(object);
+// });
+
+app.get("/getUser", (request, response) => {
+  console.log(request);
+  var data = {
+    selector: {
+      type: "userid",
+    },
+  };
+  dbconnection.get(data, "food_chain").then((res) => {
     if (res) {
-      console.log("Data Posted");
       response.send(res);
     } else {
-      console.log("Data cannot be Posted");
       response.send("error");
     }
   });
-  console.log("Data added");
 });
-
-//To get all the _id,_rev... form database
-app.get("/get_query", (request, response) => {
-  console.log("start");
-
-  dbconnection.get("sowmya_trainee").then((res) => {
+app.get("/getUserId/:id", (request, response) => {
+  dbconnection.getId(request.params.id, "food_chain").then((res) => {
     if (res) {
       response.send(res);
     } else {
@@ -50,59 +72,49 @@ app.get("/get_query", (request, response) => {
   });
 });
 
-//To get the all user data value from database
-app.get("/get_all_query/:id", (request, response) => {
-  console.log("get id",request.params.id);
-  var fetchdata ={
-    "selector": {
-       "id": request.params.id
-    }
- }
-  dbconnection.foodchain.find(fetchdata).then((res) => {
-  if (res) {
- console.log(res);
-  response.json(res);
-  } else {
-  response.send("error");
-  }
-   });
+// app.get("/getbill", (request, response) => {
+//   console.log(request);
+//   dbconnection.get("food_chain").then((res) => {
+//     if (res) {
+//       response.send(res);
+//     } else {
+//       response.send("error");
+//     }
+//   });
+// });
 
-  console.log("end");
-});
-
-//To delete particular user from database
-
-app.delete("/delete_query/:id/:id1", (request, response) => {
+app.delete("/delete/:id/:id1", (request, response) => {
   dbconnection
-    .deleted(request.params.id, request.params.id1, "sowmya_trainee")
+    .del_id(request.params.id, request.params.id1, "food_chain")
     .then((res) => {
       if (res) {
-        console.log("deleted success");
         response.send(res);
       } else {
-        console.log("can not deleted...");
         response.send("error");
       }
     });
 });
 
-// To update the particular user data using id
-app.put("/update_query", (request, response) => {
-  console.log("hey");
-  var object = {
-    _id: request.body._id,
-    _rev: request.body._rev,
-    name: request.body.name,
-    username: request.body.username,
-    // age: request.body.age,
-    // date: request.body.date,
-  }; // console.log(object);
-  dbconnection.update(object, "sowmya_trainee").then((res) => {
+app.get("/getadmin", (request, response) => {
+  console.log(request);
+  var data = {
+    selector: {
+      type: "adminid",
+    },
+  };
+  dbconnection.get(data, "food_chain").then((res) => {
     if (res) {
-      console.log("updated....");
       response.send(res);
     } else {
-      console.log("can not updated....");
+      response.send("error");
+    }
+  });
+});
+app.get("/getadminId/:id", (request, response) => {
+  dbconnection.getId(request.params.id, "food_chain").then((res) => {
+    if (res) {
+      response.send(res);
+    } else {
       response.send("error");
     }
   });
@@ -112,5 +124,6 @@ app.listen(port, (err) => {
   if (err) {
     return console.log("something bad happened", err);
   }
+
   console.log(`server is listening on http://localhost:${port}`);
 });

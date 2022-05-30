@@ -2,7 +2,7 @@
     <h1 class="lineUp">Signup Form</h1>
     <div class="container">
         <div class="col-12">
-            <form [formGroup]="regForm" (ngSubmit)="login(this.regForm.value)">
+            <form [formGroup]="registerform" >
 
                 <div class="form-group">
                     <label for="name" class="fa fa-user">Name:</label>
@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="text-center">
-                    <button id="submitButton" type="submit" class="btn btn-primary" [disabled]="!regForm.valid">
+                    <button id="submitButton" type="submit" class="btn btn-primary" (click)="register(this.registerform.value)"[disabled]="!regForm.valid">
                         Register
                     </button>
                 </div>

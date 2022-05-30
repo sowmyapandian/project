@@ -1,4 +1,37 @@
-<!-- <form [formGroup]="payment">
-    <label>Card Number:</label>
-    <input type="text" formControlName="cardnumber" placeholder="validNumber">
-</form> -->
+<!-- 1)Address
+2)payment Method
+UpI
+NetBanking
+cash on Delivery
+Price Details
+order total
+3)full summary -->
+<h1>Address</h1>
+<p>Enter your address</p>
+<form [formGroup]="payment">
+    <label >Name</label>
+    <input type="text" formControlName="name"><br>
+    <span class="invalid"
+    *ngIf="payment.controls.name.errors && payment.controls.name.touched"><br>Invalid Name</span><br>
+    <label >Door Number</label>
+    <input type="text" formControlName="doorno"><br>
+    <span class="invalid"
+    *ngIf="payment.controls.doorno.errors && payment.controls.doorno.touched"><br>Invalid
+    Door Number</span><br>
+    <label >Street Name</label>
+    <input type="text" formControlName="streetname"><br>
+    <span class="invalid"
+    *ngIf="payment.controls.streetname.errors && payment.controls.streetname.touched"><br>Invalid
+    Stretname</span><br>
+    <label >state</label>
+    <input type="text" formControlName="state"><br>
+    <span class="invalid"
+    *ngIf="payment.controls.state.errors && payment.controls.state.touched"><br>Invalid
+    state</span><br>
+    <label >Country</label>
+    <input type="text" formControlName="country"><br>
+    <span class="invalid"
+    *ngIf="payment.controls.country.errors && payment.controls.country.touched"><br>Invalid
+    country</span><br>
+    <button type="button" [disabled]="!payment.valid" (click)="next()">Next</button>
+</form>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { FormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,7 @@ export class DataService {
       'Authorization':this.Auth
     })
   };
+  
   add(db:string, doc:object): Observable<{}> {
     const url=this.url+db;
     return this.http.post(url, doc, this.httpOptions)
@@ -26,30 +27,10 @@ export class DataService {
     const url = this.url+db+'/_all_docs?include_docs=true';
     return this.http.get(url, this.httpOptions)
   }
-//   productService(){
-//     return [
-//       {
-//         id:1, 
-//         name:"Tomato",
-//         price:40
-//       },
-//       {
-//         id:2,
-//       name:"Potato",
-//         price:80
-//       },
-//       {
-//         id:3,
-//       name:"Carrot",
-//       price:120,
-//       },
-//       {
-//         id:4,
-//       name:"Beans",
-//       price:160
-//       },
-//     ]
-//   }
+// get(db:string):Observable<{}>{
+//   const url = this.url+db+'/_all_docs?include_docs=true';
+//   return this.http.fetch(url, this.httpOptions)
+// }
 
 
 }

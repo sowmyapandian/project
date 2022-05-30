@@ -1,0 +1,95 @@
+.content{
+    /* background-image: url(../../assets/bgimage.jpg); */
+    background-image: url('https://wpguynews.com/wp-content/uploads/2021/03/one-click-gmail-login-for-wordpress-featured-image.jpg');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.form-outline {
+  margin-top: 20px;
+}
+.invalid{
+  margin-top: 20px;
+}
+.container {
+  box-sizing: border-box;
+  margin: auto;
+  width: 500px;
+  padding: 20px;
+  border: 2px solid grey;
+  text-align: center;
+  margin-left: 45px;
+  height: 276px;
+  margin-top: 111px;
+  background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #aa54e4, #c962e9);
+}
+h1 {
+    text-align: center;
+    font-family: sans-serif;
+}
+/* label { */
+    /* display: flex; */
+    /* text-align: left; */
+    /* flex-direction: row; */
+    /* justify-content: flex-end;
+    text-align: right; */
+    /* width: 400px; */
+    /* line-height: 26px;
+    margin-bottom: 10px; */
+  /* } */
+  /* input {
+    /* height: 20px; */
+     /* flex: 0 0 200px;  */
+    /* margin-left: 10px; */
+    /* flex-direction: row; */
+    /* text-align: left; */
+    
+    
+    h1{
+      position: relative;
+      left: -380px;
+      color: white;
+      margin-bottom: 70px;
+      top: 78px;
+       font-family: initial;
+      /* border: 1px solid violet;
+      background-color: rgb(235, 44, 133); */
+    }
+    label {
+        display: inline-block;
+        width: 150px;
+        text-align: right;
+        margin-top: 10px;
+        margin-left: -70px;
+      }
+      .Signup{
+          text-align: center;
+      }
+      .invalid{
+        text-align: center;
+        color: red;
+      }
+      .text-center{
+        margin-top: 13px;
+      }
+      .lineUp {
+        animation: 2s anim-lineUp ease-out infinite;
+        color:rgb(188, 100, 206);
+      }
+      @keyframes anim-lineUp {
+        0% {
+          opacity: 0;
+          transform: translateY(80%);
+        }
+        20% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+          transform: translateY(0%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0%);
+        }
+      }

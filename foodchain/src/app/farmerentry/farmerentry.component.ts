@@ -1,8 +1,9 @@
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+// import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormsModule } from '@angular/forms'; 
-import { FormControl } from '@angular/forms';
+import { FormGroup} from '@angular/forms'; 
+// import { FormControl } from '@angular/forms';
 import { DataService } from '../data.service';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-farmerentry',
@@ -10,8 +11,12 @@ import { DataService } from '../data.service';
   styleUrls: ['./farmerentry.component.css']
 })
 export class FarmerentryComponent implements OnInit {
-    constructor(private data:DataService) { }
+  router: any;
+    constructor(private data:DataService) { 
+      
+    }
     orderform!:FormGroup;
+    // alluser:any;
   
   ngOnInit(): void {
   }
@@ -21,10 +26,15 @@ export class FarmerentryComponent implements OnInit {
   kg:any=1;
   name:any;
   obj:any;
+  alluser:any;
+  alluserData:any;
+  // obj1:any;
+  obj1:any=[];
   ans = true;
   kilogram!: number;
-  select!: boolean;
-  obj1 :any=[];
+  select: boolean = false;
+  
+  // obj1 :any=[];
   obj2:any;
   food = [
     { id: 1, select: false, name: 'Carrot',price:45,kilo:'' },
@@ -37,7 +47,7 @@ export class FarmerentryComponent implements OnInit {
     var kilogram = $event.target.value;
 
     for(var i=1;i<this.food.length;i++){
-      this.food[i].kilo=kilogram;
+      this.food[i].kilo=kilogram[i];
     }
     for(var i=1;i<this.food.length;i++){
       console.log(this.food[i].kilo);
@@ -87,35 +97,55 @@ export class FarmerentryComponent implements OnInit {
     this.obj={
       vegtables:this.food,
     }
-    for(var i=1;i<=this.food.length;i++){
-      if(this.food[i].select== this.ans) {
-        this.obj1=[{
-         id:this.food[i].id,name:this.food[i].name,price:this.food[i].price
-        }]
-      // console.log(this.food[i].select)
-
-      }
-      // console.log(this.obj1);
-
-
+    console.log(this.obj);
+   
+    // for(var i=1;i<=this.food.length;i++){
+      // if(this.food[i].select(isChecked) == this.ans)
+      // console.log('hello',this.food[i].select);
+      
+      // if(this.food[i].select == this.ans) {
+        
+      //    this.obj1=[{
+      //    id:this.food[i].id,
+      //    name:this.food[i].name,
+      //    price:this.food[i].price
+      //   }]
+      //  console.log("individual",this.obj1);
+      // }
+ 
+      // for (const iterator of this.food) {
+      //   if(iterator.select==this.ans) {
+        
+      //     this.obj1=[{
+      //     id:this.food.id,
+      //     name:this.food.name,
+      //     price:this.food.price
+      //    }]
+      //   console.log("individual",this.obj1);
+      //  }
+      // }
+    // console.log("obj1",this.obj1);
+      
     }
-       console.log(this.obj1);
+    // console.log("obj1",this.obj1);
+     
 
-    for(i=1;i<this.obj1.length;i++){
-      this.obj2={
-        value:this.obj1
-      }
-      console.log("inside loop:",this.obj2);
-    }
+    // for(i=1;i<this.obj1.length;i++){
+      // var obj2:any=[]
+    //   this.obj2={
+    //     value:this.obj1
+    //   }
+    //   console.log("inside loop:",this.obj2);
+    // }
     // console.log("obj2",obj2);
-    console.log("outside loop:",this.obj2);
+    // console.log("outside loop:",this.obj2);
 
-  }
+  // }
 
   
   
-  submit(){
-    console.log("correct form:",this.obj2);
+  submit() {
+    // console.log("correct form:",this.obj);
     this.data.add("food_chain",this.obj).subscribe(res=>{
         console.log(res);
         alert("data was posted");
@@ -128,21 +158,20 @@ export class FarmerentryComponent implements OnInit {
       },rej=>{
         alert("data was not retrived!!")
       });
-  }
-//   headers=["id","vegtables","Price"];
-//     add($event:any,d:any) {
-//       const id = $event.target.value;
-//       const name=$event.target.value;
-//       const price=$event.target.value;
-//       const isChecked = $event.target.checked;
-//        if(d.id==id){
-//         d.select = isChecked;
-//         console.log(this.store.push(this.food));
-//        }
-// } 
+   
+    }
+  //   fetch(){
+  //   this.data.fetch("foodchain").subscribe(res=>{
+  //     console.log(res);
+  //     this.alluser = res;
+  //     this.alluser = this.alluser.rows;
+  //     this.alluserData = this.alluser.map((el:any)=>el.doc)
+  //     console.log(this.alluserData);
+  //     alert("the data is Fetched");
+  //   },rej=>{
+  //     alert("data was not Fetched!!")
+  //   });
+
+  // }
+
 }
-
-// function price(price: any) {
-//   throw new Error('Function not implemented.');
-// }
-

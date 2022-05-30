@@ -1,0 +1,15 @@
+<p>Payment</p>
+<form >
+<div>
+    <input type="radio" name="online"  value="UPI or Paytm"  (change)="upi($event)">
+    <label>UPI or Paytm</label><br>
+    <input type="radio" name="online"  value="NetBanking"  (change)="netBank($event)" >
+    <label>NetBanking</label><br>
+    <input type="radio" name="online"  value="Cash on delivery"  (change)="cash($event)">
+    <label>Cash on delivery</label><br>
+</div>
+<div>
+    <button type="button" (click)="add()">Add</button>
+    {{order}}
+</div>
+</form>

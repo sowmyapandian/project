@@ -39,10 +39,10 @@
   <!-- <div class="row"> -->
     <!-- <div class="col-12"> -->
     <div class="content">
-      <h1 class="lineUp">Login form</h1>
+      <h1 class="lineUp">User Login form</h1>
       <div class="container">
     <div class="align">
-      <form [formGroup]="loginForm" method="post" (ngSubmit)="login(this.loginForm.value)">
+      <form [formGroup]="userform" >
         <div class="form-outline mb-4,text-center">
           <label for="username" class="form-label text-light" >Email:</label>
           <input type="text" id="username" placeholder="Email Address" formControlName="username">
@@ -59,7 +59,7 @@
         </div>
 
         <div class="text-center">
-          <button id="submitButton" type="submit" class="btn btn-primary" >Login</button>
+          <button id="submitButton" type="submit" (click)="userFormData(this.userform.value)" class="btn btn-primary" >Login</button>
         </div>
         <!-- <div class="text-center text-success" *ngIf="successMessage">{{successMessage}}</div> -->
       </form>

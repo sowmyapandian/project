@@ -3,17 +3,18 @@ import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 // import { DataService } from '../data.service';
 import { DbService } from '../db.service';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-adminlogin',
+  templateUrl: './adminlogin.component.html',
+  styleUrls: ['./adminlogin.component.css']
 })
-export class LoginComponent implements OnInit {
+export class AdminloginComponent implements OnInit {
+  object: any = [];
   alldata: any;
   flag = 0;
-  object: any = [];
-  userform!: FormGroup;
+  adminform!: FormGroup;
+
   constructor(
     private formbuilder: FormBuilder,
     private api: DbService,
@@ -21,31 +22,30 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userform = this.formbuilder.group({
+    this.adminform = this.formbuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
-
-    this.api.getUser().subscribe((data) => {
+    this.api.getadmin().subscribe((data) => {
       console.log(data);
-      console.log('Data was fetching');
+      console.log('Data was fetching....');
       this.alldata = data;
       this.alldata = this.alldata.docs;
       console.log(this.alldata);
       for (const i of this.alldata) {
-        // const elt = this.alldata[i];
-        // console.log(elt.id);
-        // this.api.getUserId(elt.id).subscribe((res) => {
-        //   console.log(res);
+        // if (Object.prototype.hasOwnProperty.call(this.alldata, i)) {
+        //   const elt = this.alldata[i];
+        //   console.log(elt.id);
+        //   this.api.getadminId(elt.id).subscribe((res) => {
+        console.log(i);
         this.object.push(i);
-        console.log('Fetched successfuly');
         // });
+        // }
       }
     });
   }
 
-  userFormData(formvalue: any) {
-    console.log(formvalue);
+  adminFormsData(formvalue: any) {
     for (const i of this.object) {
       if (
         i.username == formvalue.username &&
@@ -55,9 +55,13 @@ export class LoginComponent implements OnInit {
       }
     }
     if (this.flag == 1) {
-      this.router.navigate(['/billingdetails']);
+      this.router.navigate(['/dashboard']);
     } else {
       alert('Not a valid user');
       location.reload();
     }
-  }}
+  }
+}
+
+
+

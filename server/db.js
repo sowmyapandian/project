@@ -5,33 +5,46 @@ var username = "apikey-v2-237a9fx60g51gyopiewwx5pb339t2r1xw085fzt3skgx";
 var password = "85e4a7e36372ac1e47c80f4b81a78d62";
 
 var cloudant = Cloudant({ url: url, username: username, password: password });
-var foodchain = cloudant.use("sowmya_trainee");
+// var food_chain = cloudant.use("sowmya_trainee");
 
-info={
-  selector: {
-    id:'admin',
-    email: 'sowmyapandian020201@gmail.com',
-    password:'Sowmi@2',
-    cpassword:'Sowmi@2'
-  },
-};
 insert = function (paramsvalue) {
   console.log(paramsvalue);
-  return cloudant.use("sowmya_trainee").insert(paramsvalue);
+  cloudant
+    .use("housing-software")
+    .insert(paramsvalue)
+    .then((data) => {
+      console.log("Data Inserted into Cloud database" + data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
-get = function () {
-  console.log(paramsvalue);
-  return cloudant.use("sowmya_trainee").list(paramsvalue);
+// insert1 = function (paramsvalue) {
+//   console.log(paramsvalue);
+//   cloudant
+//     .use("housing-software")
+//     .insert(paramsvalue)
+//     .then((data) => {
+//       console.log("Data Inserted into Cloud database" + data);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
+get = function (admindata, dbname) {
+  return cloudant.use(dbname).find(admindata);
 };
+getbill = function (dbname) {
+  return cloudant.use(dbname).list();
+};
+getId = function (id, dbname) {
+  return cloudant.use(dbname).get(id);
+};
+del_id = function (id, id1, dbname) {
+  return cloudant.use(dbname).destroy(id, id1);
+};
+module.exports = { get, getId, insert, del_id };
 
-update = function (paramsvalue) {
-  console.log(paramsvalue);
-  return cloudant.use("sowmya_trainee").insert(paramsvalue);
-};
 
-destroy = function (_id, _rev) {
-  console.log(paramsvalue);
-  return cloudant.use("sowmya_trainee").destroy(paramsvalue);
-};
-module.exports = { insert,foodchain };
+// module.exports = { insert,food_chain };

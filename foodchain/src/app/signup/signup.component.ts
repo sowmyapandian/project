@@ -9,7 +9,7 @@ import { DbService } from '../db.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  regForm:FormGroup;
+  registerForm!:FormGroup;
   record:any={
     name:'',
     mobileNumber:'',
@@ -17,8 +17,8 @@ export class SignupComponent implements OnInit {
     password:''
   }
 
-  constructor(private fb: FormBuilder,private data:DbService) {
-    this.regForm=this.fb.group({
+  constructor(private fb: FormBuilder,private api:DbService) {
+    this.registerForm=this.fb.group({
       name:[this.record.name],
       mobileNumber:[this.record.mobileNumber],
       email:[this.record.email],
@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.regForm = this.fb.group({
+    this.registerForm = this.fb.group({
       name: ['',[Validators.required]],
       mobileNumber: ['',[Validators.required, Validators.min(1000000000),Validators.max(9999999999)]],
       email:['',[Validators.required, Validators.pattern("[a-zA-Z0-9]*@gmail.com")]],
@@ -35,19 +35,19 @@ export class SignupComponent implements OnInit {
     })
   }
   get name(){
-    return this.regForm.get('name')
+    return this.registerForm.get('name')
   }
   get mobileNumber(){
-    return this.regForm.get('mobileNumber')
+    return this.registerForm.get('mobileNumber')
   }
   get email(){
-    return this.regForm.get('email')
+    return this.registerForm.get('email')
   }
   get password(){
-    return this.regForm.get('password')
+    return this.registerForm.get('password')
   }
   // register(){
-  //   this.data.add("sowmya_trainee",this.regForm.value).subscribe(res=>{
+  //   this.data.add("sowmya_trainee",this.registerForm.value).subscribe(res=>{
   //     console.log(res);
   //     alert("data was posted👌");
   //   },rej=>{
@@ -60,16 +60,11 @@ export class SignupComponent implements OnInit {
   //     alert("data was not retrived!!😢")
   //   });
   // }
-  login(FormValue: NgForm){
-    this.data.logindata(FormValue).subscribe(
-      (info: any) => {
-        console.log(alert('Data posted'));
-        this.regForm.reset();
-      },
-      (rej: string) => {
-        console.log('Error' + rej);
-      }
-    );
-    console.log(FormValue);
-  }
+register(Formvalue:NgForm){
+  console.log(Formvalue);
+
+  this.api.signupdata(Formvalue).subscribe((data) => {
+     console.log(data);
+  })
+}
 }

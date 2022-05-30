@@ -1,6 +1,6 @@
 
 <h1>Pick the vegtables you want to Order</h1>
-<!-- <form [formGroup]="orderform"> -->
+<!-- <form [formGroup]="orderform">  -->
  
 <div class="container mt-5">
     <table class="table">
@@ -39,21 +39,26 @@
             <input
               name="kilo"  
               id="kilo"
-              [(ngModel)]="kilogram"         
+              [(ngModel)]="kilogram"       
               type="text"
               (change)="onchangenumber($event)"
              />
 
           </th>
-
+          
         </tr>
       </tbody>
     </table>
     <button type="button" (click)="submit()">Submit</button><br><br>
+    your total is Rs.{{sum}} 
+    <br><br>
+    <!-- <button type="button" (click)="fetch()">Fetch</button> -->
+    <!-- <button type="button" (click)="add()"></button> -->
     <!-- <button type="button" (click)="add($event,food)">Add</button> -->
+    <a routerLink="/payment">Click here</a>
   
 </div>
-<!-- </form> -->
+<!-- </form>  -->
 
   <!-- <div class="tab">
       <table id="table">
